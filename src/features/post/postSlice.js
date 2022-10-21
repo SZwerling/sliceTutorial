@@ -10,10 +10,13 @@ const postSlice = createSlice({
     name: 'posts',
     initialState,
     reducers: {
-
+        postAdded(state, action){      // .push only works inside of slice
+            state.push(action.payload) // looks like it mutates, but does not
+        }                              // uses "immerjs" to create new state under the hood
     }
 })
 
 export const selectAllPosts = (state) => state.posts;
+export const { postAdded } = postSlice.actions;
 
 export default postSlice.reducer;
