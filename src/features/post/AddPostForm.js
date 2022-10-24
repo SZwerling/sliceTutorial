@@ -14,13 +14,9 @@ const AddPostForm = () => {
    const dispatch = useDispatch();
 
    const onSavePost = () => {
-      if (titleRef && contentRef) {
+      if (titleRef.current.value && contentRef.current.value) {
          dispatch(
-            postAdded({
-               id: nanoid(),
-               title: titleRef.current.value,
-               content: contentRef.current.value,
-            })
+            postAdded(titleRef.current.value, contentRef.current.value)
          );
          formRef.current.reset();
       }
