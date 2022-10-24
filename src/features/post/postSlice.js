@@ -21,12 +21,13 @@ const postSlice = createSlice({
          reducer(state, action) {
             state.push(action.payload); // looks like it mutates, but does not // uses "immerjs" to create new state under the hood  // .push only works inside of slice
          },
-         prepare(title, content) {
+         prepare(title, content, userId) {
             return {
                payload: {
                   id: nanoid(),
                   title,
                   content,
+                  userId
                },
             };
          },
